@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>489</width>
+    <height>551</height>
+   </rect>
+  </property>
+  <property name="Sudoku">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="Q3Frame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>481</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="margin">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>471</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>MV Boli</family>
+            <pointsize>14</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>SUDOKU</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QTimeEdit" name="timer"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_13"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_11">
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Sans Serif'; font-size:14pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_14"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_15"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_16"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_17"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_18"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_12">
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="text_19"/>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="2">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_23"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_21"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_24"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_25"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_26"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QTextEdit" name="polje_27"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QTextEdit" name="polje_28"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_22"/>
+          </item>
+          <item row="3" column="2">
+           <widget class="QTextEdit" name="polje_29"/>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="4">
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_33"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_31"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_34"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_35"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_36"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_37"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_38"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_32"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_39"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_43"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_41"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_44"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_45"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_46"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_47"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_48"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_42"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_49"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="2">
+         <layout class="QGridLayout" name="gridLayout_11">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_53"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_51"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_54"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_55"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_57"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_58"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_52"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_59"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_56"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="4">
+         <layout class="QGridLayout" name="gridLayout_12">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_63"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_61"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_64"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_65"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_66"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_67"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_68"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_62"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_69"/>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="0">
+         <layout class="QGridLayout" name="gridLayout_13">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_73"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_71"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_74"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_75"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_76"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_77"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_78"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_72"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_79"/>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="2">
+         <layout class="QGridLayout" name="gridLayout_14">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_83"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_81"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_84"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_85"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_86"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_87"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_88"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_82"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_89"/>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="4">
+         <layout class="QGridLayout" name="gridLayout_15">
+          <item row="0" column="2">
+           <widget class="QTextEdit" name="polje_93"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="polje_91"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTextEdit" name="polje_94"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QTextEdit" name="polje_95"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QTextEdit" name="polje_96"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QTextEdit" name="polje_97"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QTextEdit" name="polje_98"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="polje_92"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QTextEdit" name="polje_99"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="Line" name="line_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="Line" name="line_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="Line" name="line_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="Line" name="line_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="Line" name="line_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="Line" name="line_9">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="Line" name="line_10">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="Line" name="line_11">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="Line" name="line_12">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Solve</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="hint">
+          <property name="text">
+           <string>Hint</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="undo">
+          <property name="text">
+           <string>Undo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="new_game">
+          <property name="text">
+           <string>New Game</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>489</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends>QFrame</extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
