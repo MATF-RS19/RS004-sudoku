@@ -1,6 +1,5 @@
 #include "sudoku.h"
 
-
 int **allocateMatrixMemory(int dimension){
     int** m = new int *[dimension];
     int i, j;
@@ -191,7 +190,18 @@ bool Sudoku::checkSquares(){
 
 bool Sudoku::checkSudoku(){
     return checkRows() & checkCols() & checkSquares();
+}
 
+bool Sudoku::checkFullSudoku(){
+    int i, j;
+    for(i = 0; i < dimension; i++){
+        for(j = 0; j < dimension; j++){
+            if((grid[i][j] < 1) | (grid[i][j] > 9)){
+                return false;
+            }
+        }
+    }
+    return checkSudoku();
 }
 
 bool Sudoku::generateSudoku(int row, int col){

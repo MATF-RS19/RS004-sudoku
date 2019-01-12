@@ -22,9 +22,14 @@ public:
 
 
     /*  These functions check if the current grid is a valid Sudoku
-     * Only checkSudoku should be called. It uses all of the other functions to check the grid
+     * Only checkSudoku or checkFullSuudoku should be called. It uses all of the other functions to check the grid
+     * number 0 is used to indicate an empty field and checkSudoku ignores it
+     *
+     *
+     * checkFullSudoku will perform a check to make sure that only only numbers in interval [1, 9] exist in the grid
      */
     bool checkSudoku();
+    bool checkFullSudoku();
     bool checkRows();
     bool checkCols();
     bool checkSquares();
