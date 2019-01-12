@@ -82,14 +82,13 @@ void SudokuWindow::syncButtons(){
                 btns[i][j]->setText(QString::number(grid[i][j]));
                 QPalette qp = btns[i][j]->palette();
                 qp.setColor(QPalette::Button,QColor(Qt::gray));
-                btns[i][j]->setAutoFillBackground(true);
                 btns[i][j]->setPalette(qp);
                 btns[i][j]->update();
+
             }else{
                 btns[i][j]->setText("");
                 QPalette qp = btns[i][j]->palette();
                 qp.setColor(QPalette::Button,QColor(Qt::white));
-                btns[i][j]->setAutoFillBackground(true);
                 btns[i][j]->setPalette(qp);
                 btns[i][j]->update();
 
@@ -102,16 +101,17 @@ void SudokuWindow::syncButtons(){
 
 void SudokuWindow::reset(){
     int i;
+    isSolved = 0;
     for(i = 0; i < cons; i++){
         disconnect(connections[i]);
     }
     cons = 0;
     s->resetSudoku();
     s->generateSudoku(0, 0);
+
     s->generateUnsolvedSudoku();
 
     syncButtons();
-    isSolved = 0;
 }
 
 void SudokuWindow::checkGrid(){

@@ -30,7 +30,7 @@ int **allocateMatrixMemory(int dimension){
 void deallocateMatrixMemory(int** m, int dimension){
     int i;
     for(i = 0; i < dimension; i++){
-        delete m[i];
+        delete [] m[i];
     }
     delete m;
 }
@@ -122,7 +122,6 @@ void Sudoku::generateUnsolvedSudoku(){
 
         }while((matrixSum(filled, dimension) < n));
 
-        cout << n << endl;
 
         tmp = grid;
         grid = _grid;
@@ -159,12 +158,13 @@ bool Sudoku::checkRows(){
 
             if((index != 0) & (digits[index] > 1)){
                // cout << "Check failed on number " << index << " in row " << i + 1 <<" Col " << j + 1 << endl;
+                delete [] digits;
                 return false;
             }
         }
 
     }
-
+    delete [] digits;
     return true;
 }
 
@@ -183,11 +183,12 @@ bool Sudoku::checkCols(){
 
             if((index != 0) & (digits[index] > 1)){
                 //cout << "Check failed on number " << index << " in col " << i + 1 <<" Row " << j + 1 << endl;
+                delete [] digits;
                 return false;
             }
         }
     }
-
+    delete [] digits;
     return true;
 }
 
@@ -208,10 +209,12 @@ bool Sudoku::checkSquare(int i, int j){
             digits[index]++;
             if((index != 0) & (digits[index] > 1)){
                // cout << "Square check failed on number " << index << "in row " << i * 3 + i2 + 1 << " col " << j*3 + j2 + 1 << endl;
-                return false;
+               delete [] digits;
+               return false;
             }
         }
     }
+    delete [] digits;
     return true;
 }
 
@@ -261,11 +264,13 @@ bool Sudoku::generateSudoku(int row, int col){
              continue;
         }
         if(generateSudoku(row, col + 1)){
+            delete [] array;
             return true;
         }else{
              grid[row][col] = k;
         }
     }
+    delete [] array;
     return false;
 }
 
@@ -297,11 +302,11 @@ void Sudoku::countSolutions(int row, int col, int* counter){
         countSolutions( row, col + 1, counter);
         grid[row][col] = 0;
         if(*counter > 1) {
-            delete array;
+            delete [] array;
             return;
         }
     }
-    delete array;
+    delete [] array;
     return;
 }
 
