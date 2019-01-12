@@ -1,28 +1,19 @@
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QListWidget>
+#include<QApplication>
 
-#include "ui_main.h"
-#include "sudoku.h"
-#include<time.h>
-#include<iostream>
-#include<QTextStream>
-#include<QCoreApplication>
-using namespace std;
+#include"errormessage.h"
+#include "popup.h"
+#include "sudokuwindow.h"
 
-int* random2Array(int size){
-    int *array = new int[size];
-    int i;
-    for(i = 0; i < size; i++){
-        array[i] = i;
-    }
-    random_shuffle(&array[0], &array[size - 1]);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
-    return array;
-}
+    SudokuWindow pop(9);
+    pop.move(300, 300);
+    pop.setWindowTitle("Sudoku");
+    pop.show();
 
-int main(int argc, char **argv){
-    QCoreApplication(argc, argv);
-    srand(time(NULL));
-    Sudoku s(9);
-    s.generateSudoku(0, 0);
-    while(!s.generateUnsolvedSudoku());
-    s.printGrid();
+    return app.exec();
 }

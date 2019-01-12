@@ -26,10 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    sudoku.cpp
+    sudoku.cpp \
+    popup.cpp \
+    sudokuwindow.cpp \
+    errormessage.cpp
 
 HEADERS += \
-    sudoku.h
+    sudoku.h \
+    popup.h \
+    sudokuwindow.h \
+    errormessage.h
 
 FORMS += \
         main.ui

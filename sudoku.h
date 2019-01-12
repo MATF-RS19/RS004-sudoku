@@ -50,24 +50,27 @@ public:
 
 
     /* Creates a new grid which has only 1 valid solution
-     * On failure, returns false and the current grid is left unchanged
-     * On succsess, returns true and the current grid is deleted and replaced with a new one
-     * Uses a brute force method and the call while(generateUnsolvedSudoku()); will always produce a valid result
+     * NOTE: grid must be set to  a fully solved sudoku, before calling this function, such as calling generateSudoku(0, 0)
      */
-    bool generateUnsolvedSudoku();
+    void generateUnsolvedSudoku();
 
 
     /* Used to check the number of solutions
      * The result is stored in a variable pointed to by counter
      * *counter should always be initalised to 0
      * After finding 2 solutions it exits - this is because it's impossible to check the amount of solutions
-     *  for grids which are almost empty, since it's too large.
+     *  for grids which are almost empty
      */
     void countSolutions(int row, int col, int* counter);
 
 
+    /*Empties the grid of all numbers - this is done by setting all values to 0
+     */
+    void resetSudoku();
+
 
     /* Getters for the private variables
+     * NOTE: the internal SudokuGrid can be changed by using getGrid
      */
     int** getGrid();
     int getDimension();

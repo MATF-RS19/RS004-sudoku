@@ -1,5 +1,19 @@
 #include "sudoku.h"
+#include<math.h>
 
+/* Fills the dimension X dimension sized array m with the number n
+ */
+void fillMatrix(int **m, int dimension, int n){
+    int i, j;
+    for(i = 0; i < dimension; i++){
+        for(j = 0; j < dimension; j++){
+            m[i][j] = n;
+        }
+    }
+}
+
+/* Allocates memory for a new matrix and returns a pointer to it
+ */
 int **allocateMatrixMemory(int dimension){
     int** m = new int *[dimension];
     int i, j;
@@ -12,6 +26,7 @@ int **allocateMatrixMemory(int dimension){
     return m;
 }
 
+
 void deallocateMatrixMemory(int** m, int dimension){
     int i;
     for(i = 0; i < dimension; i++){
@@ -20,6 +35,10 @@ void deallocateMatrixMemory(int** m, int dimension){
     delete m;
 }
 
+/* allocates memory for a new array with size members
+ * the array is filled with numbers in the range [1, size] and then shuffled
+ * returns a pointer to the array
+ */
 int* randomArray(int size){
     int *array = new int[size];
     int i;
@@ -31,6 +50,9 @@ int* randomArray(int size){
     return array;
 }
 
+/* allocates memory for a new array with size members
+ * all values in the array are set to 0
+ */
 int* zeroArray(int size){
     int *array = new int[size];
     int i;
@@ -41,6 +63,8 @@ int* zeroArray(int size){
     return array;
 }
 
+/* Calculates the sum of all numbers in the matrix m
+ */
 int matrixSum(int **m, int dimension){
     int sum = 0;
     int i, j;
@@ -54,7 +78,8 @@ int matrixSum(int **m, int dimension){
 
 Sudoku::Sudoku(int dim)
 {
-    dimension = dim;
+    dimension = (int)sqrt(dim);
+    dimension *= dimension;
     grid = allocateMatrixMemory(dimension);
 }
 
@@ -71,7 +96,11 @@ Sudoku::Sudoku(Sudoku &s){
     }
 }
 
-bool Sudoku::generateUnsolvedSudoku(){
+
+/* Creates an unsolved Sudoku puzzle by taking a random amount of numbers from a solved grid until it finds a grid with a
+ * unique solution
+ */
+void Sudoku::generateUnsolvedSudoku(){
     int **filled = allocateMatrixMemory(dimension);
     int **_grid = allocateMatrixMemory(dimension);
 
@@ -79,6 +108,11 @@ bool Sudoku::generateUnsolvedSudoku(){
     int row, col;
     int** tmp;
     do{
+        fillMatrix(filled, dimension, 0);
+        fillMatrix(_grid, dimension, 0);
+
+        int n = rand()%20 + 20;
+
         do{
             int nextToFill = rand()%(dimension * dimension);
             row = nextToFill/dimension;
@@ -86,8 +120,9 @@ bool Sudoku::generateUnsolvedSudoku(){
             filled[row][col] = 1;
             _grid[row][col] = grid[row][col];
 
-        }while((matrixSum(filled, dimension) < 20));
+        }while((matrixSum(filled, dimension) < n));
 
+        cout << n << endl;
 
         tmp = grid;
         grid = _grid;
@@ -96,7 +131,9 @@ bool Sudoku::generateUnsolvedSudoku(){
         countSolutions(0, 0, &cnt);
         if(cnt == 1){
             deallocateMatrixMemory(_grid, dimension);
-            return true;
+            deallocateMatrixMemory(filled, dimension);
+
+            return;
         }else{
             cnt = 0;
 
@@ -104,14 +141,7 @@ bool Sudoku::generateUnsolvedSudoku(){
             grid = _grid;
             _grid = tmp;
         }
-
-    }while(matrixSum(filled, dimension) < 45);
-
-
-
-    deallocateMatrixMemory(filled, dimension);
-    deallocateMatrixMemory(_grid, dimension);
-    return false;
+    }while(1);
 }
 
 bool Sudoku::checkRows(){
@@ -161,13 +191,20 @@ bool Sudoku::checkCols(){
     return true;
 }
 
+void Sudoku::resetSudoku(){
+    fillMatrix(grid, dimension, 0);
+}
+
 bool Sudoku::checkSquare(int i, int j){
     int i2, j2;
     int* digits = zeroArray(dimension + 1);
+    int sqrtDim = (int)sqrt(dimension);
+    for(i2 = 0; i2 < sqrtDim; i2++){
+        for(j2 = 0; j2 < sqrtDim; j2++){
+            if(i * sqrtDim + i2 > dimension ) continue;
+            if(j * sqrtDim + j2 > dimension ) continue;
 
-    for(i2 = 0; i2 < 3; i2++){
-        for(j2 = 0; j2 <3; j2++){
-            int index = grid[i*3 + i2][j*3 + j2];
+            int index = grid[i*sqrtDim + i2][j*sqrtDim + j2];
             digits[index]++;
             if((index != 0) & (digits[index] > 1)){
                // cout << "Square check failed on number " << index << "in row " << i * 3 + i2 + 1 << " col " << j*3 + j2 + 1 << endl;
@@ -204,6 +241,9 @@ bool Sudoku::checkFullSudoku(){
     return checkSudoku();
 }
 
+
+/* Recursively fills the grid with random numbers until it finds a valid number
+ */
 bool Sudoku::generateSudoku(int row, int col){
     row += col/dimension;
     col = col%dimension;
@@ -256,8 +296,12 @@ void Sudoku::countSolutions(int row, int col, int* counter){
         }
         countSolutions( row, col + 1, counter);
         grid[row][col] = 0;
-        if(*counter > 1) return;
+        if(*counter > 1) {
+            delete array;
+            return;
+        }
     }
+    delete array;
     return;
 }
 
