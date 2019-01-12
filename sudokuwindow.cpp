@@ -76,6 +76,7 @@ SudokuWindow::SudokuWindow(int dim, QWidget *parent) : QWidget(parent)
 
 void SudokuWindow::syncButtons(){
     int i, j;
+
     for(i = 0; i < dimension; i++){
         for(j = 0; j < dimension; j++){
             if(grid[i][j] > 0){
@@ -102,6 +103,7 @@ void SudokuWindow::syncButtons(){
 void SudokuWindow::reset(){
     int i;
     isSolved = 0;
+
     for(i = 0; i < cons; i++){
         disconnect(connections[i]);
     }
@@ -111,16 +113,19 @@ void SudokuWindow::reset(){
 
     s->generateUnsolvedSudoku();
 
+    grid = s->getGrid();
+
     syncButtons();
 }
 
 void SudokuWindow::checkGrid(){
+
     int i, j;
     if(isSolved) return;
+
     if(s->checkFullSudoku()){
         ErrorMessage *er = new ErrorMessage("Sudoku je resen!");
         QPoint qp = QCursor::pos();
-
         er->move(qp);
         er->show();
         isSolved = true;
@@ -131,6 +136,7 @@ void SudokuWindow::checkGrid(){
         for(j = 0; j < dimension; j++){
 
             QString qs = btns[i][j]->text();
+
             int newNumber = qs.toInt();
             int oldNumber = grid[i][j];
             grid[i][j] = newNumber;

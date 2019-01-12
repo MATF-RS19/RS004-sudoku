@@ -32,7 +32,7 @@ void deallocateMatrixMemory(int** m, int dimension){
     for(i = 0; i < dimension; i++){
         delete [] m[i];
     }
-    delete m;
+    delete [] m;
 }
 
 /* allocates memory for a new array with size members
@@ -251,7 +251,7 @@ bool Sudoku::generateSudoku(int row, int col){
     row += col/dimension;
     col = col%dimension;
     if( row == dimension){
-        return checkSudoku();
+        return checkFullSudoku();
     }
     int *array = randomArray(dimension);
     int i;
@@ -278,7 +278,7 @@ void Sudoku::countSolutions(int row, int col, int* counter){
     row += col/dimension;
     col = col%dimension;
     if( row == dimension){
-        if(checkSudoku()){
+        if(checkFullSudoku()){
             (*counter)++;
         }
         return;
@@ -290,11 +290,9 @@ void Sudoku::countSolutions(int row, int col, int* counter){
         return;
     }
 
-    int *array = randomArray(dimension);
-
     int i;
-    for(i = 0; i < 9; i++){
-        grid[row][col] = array[i];
+    for(i = 0; i < dimension; i++){
+        grid[row][col] = i + 1;
         if(!checkSudoku()){
             grid[row][col] = 0;
             continue;
@@ -302,11 +300,9 @@ void Sudoku::countSolutions(int row, int col, int* counter){
         countSolutions( row, col + 1, counter);
         grid[row][col] = 0;
         if(*counter > 1) {
-            delete [] array;
             return;
         }
     }
-    delete [] array;
     return;
 }
 
